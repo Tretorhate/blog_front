@@ -104,3 +104,16 @@ button:hover {
 .edit-form button {
   margin-right: 10px;
 }
+
+.error-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.error-list .error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Existing styles remain unchanged */

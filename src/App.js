@@ -17,8 +17,6 @@ function App() {
       try {
         const res = await getProfile();
         setUser(res.data.data);
-        localStorage.setItem("userId", res.data.data.id); // Ensure ID is stored
-        localStorage.setItem("userRole", res.data.data.role); // Ensure role is stored
       } catch (err) {
         console.error("Not logged in", err);
       }
@@ -37,7 +35,8 @@ function App() {
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register setUser={setUser} />} />
             <Route path="/create-post" element={<PostForm />} />
-            <Route path="/" element={<PostList />} />
+            <Route path="/" element={<PostList user={user} />} />{" "}
+            {/* Pass user */}
             <Route path="/profile" element={<Profile user={user} />} />
           </Routes>
         </div>

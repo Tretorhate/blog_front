@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPosts, updatePost, deletePost } from "../api";
 
-function PostList() {
+function PostList({ user }) {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState("");
   const [editingPostId, setEditingPostId] = useState(null);
@@ -10,23 +10,29 @@ function PostList() {
     content: "",
     tags: "",
   });
+  const [editErrors, setEditErrors] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const res = await getPosts();
         setPosts(res.data.data);
+        setError(""); // Clear error on success
       } catch (err) {
-        setError(err.response?.data.message || "Failed to fetch posts");
+        console.error("Fetch error:", err); // Log full error for debugging
+        setError(
+          err.response?.data.message ||
+            err.message ||
+            "Failed to fetch posts - check console for details"
+        );
       }
     };
     fetchPosts();
   }, []);
 
   const canEditOrDelete = (post) => {
-    const userId = localStorage.getItem("userId"); // Assuming user ID is stored after login
-    const userRole = localStorage.getItem("userRole"); // Assuming role is stored after login
-    return userId === post.author._id.toString() || userRole === "admin";
+    if (!user) return false;
+    return user.id === post.author._id.toString() || user.role === "admin";
   };
 
   const handleEditClick = (post) => {
@@ -36,6 +42,7 @@ function PostList() {
       content: post.content,
       tags: post.tags.join(", "),
     });
+    setEditErrors([]);
   };
 
   const handleEditChange = (e) => {
@@ -49,11 +56,16 @@ function PostList() {
         : [];
       const updatedPost = { ...editFormData, tags: tagsArray };
       await updatePost(postId, updatedPost);
-      const res = await getPosts(); // Refresh posts after update
+      const res = await getPosts();
       setPosts(res.data.data);
-      setEditingPostId(null); // Exit edit mode
+      setEditingPostId(null);
+      setEditErrors([]);
     } catch (err) {
-      setError(err.response?.data.message || "Failed to update post");
+      setEditErrors(
+        err.response?.data.errors || [
+          err.response?.data.message || "Failed to update post",
+        ]
+      );
     }
   };
 
@@ -61,7 +73,7 @@ function PostList() {
     if (window.confirm("Are you sure you want to delete this post?")) {
       try {
         await deletePost(postId);
-        const res = await getPosts(); // Refresh posts after deletion
+        const res = await getPosts();
         setPosts(res.data.data);
       } catch (err) {
         setError(err.response?.data.message || "Failed to delete post");
@@ -71,12 +83,22 @@ function PostList() {
 
   return (
     <div className="post-list">
-      <h2>Your Posts</h2>
+      <h2>All Posts</h2>
       {error && <p className="error">{error}</p>}
+      {posts.length === 0 && !error && <p>No posts available.</p>}
       {posts.map((post) => (
         <div key={post._id} className="post">
           {editingPostId === post._id ? (
             <div className="edit-form">
+              {editErrors.length > 0 && (
+                <ul className="error-list">
+                  {editErrors.map((error, index) => (
+                    <li key={index} className="error">
+                      {error}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <input
                 type="text"
                 name="title"

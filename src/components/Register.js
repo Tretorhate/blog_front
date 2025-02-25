@@ -8,7 +8,7 @@ function Register({ setUser }) {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,19 +20,29 @@ function Register({ setUser }) {
     try {
       const res = await register(formData);
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data.user.id); // Store user ID
-      localStorage.setItem("userRole", res.data.user.role); // Store user role
       setUser(res.data.user);
       navigate("/");
     } catch (err) {
-      setError(err.response?.data.message || "Registration failed");
+      setErrors(
+        err.response?.data.errors || [
+          err.response?.data.message || "Registration failed",
+        ]
+      );
     }
   };
 
   return (
     <div className="auth-form">
       <h2>Register</h2>
-      {error && <p className="error">{error}</p>}
+      {errors.length > 0 && (
+        <ul className="error-list">
+          {errors.map((error, index) => (
+            <li key={index} className="error">
+              {error}
+            </li>
+          ))}
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"

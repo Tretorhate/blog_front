@@ -7,7 +7,7 @@ function Profile({ user }) {
     email: user?.email || "",
     bio: user?.bio || "",
   });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState([]);
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -19,9 +19,13 @@ function Profile({ user }) {
     try {
       const res = await updateProfile(formData);
       setMessage("Profile updated successfully");
-      setError("");
+      setErrors([]);
     } catch (err) {
-      setError(err.response?.data.message || "Failed to update profile");
+      setErrors(
+        err.response?.data.errors || [
+          err.response?.data.message || "Failed to update profile",
+        ]
+      );
       setMessage("");
     }
   };
@@ -31,7 +35,15 @@ function Profile({ user }) {
   return (
     <div className="profile">
       <h2>Your Profile</h2>
-      {error && <p className="error">{error}</p>}
+      {errors.length > 0 && (
+        <ul className="error-list">
+          {errors.map((error, index) => (
+            <li key={index} className="error">
+              {error}
+            </li>
+          ))}
+        </ul>
+      )}
       {message && <p className="success">{message}</p>}
       <form onSubmit={handleSubmit}>
         <input

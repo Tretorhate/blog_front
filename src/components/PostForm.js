@@ -8,7 +8,7 @@ function PostForm() {
     content: "",
     tags: "",
   });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,14 +24,26 @@ function PostForm() {
       await createPost({ ...formData, tags: tagsArray });
       navigate("/");
     } catch (err) {
-      setError(err.response?.data.message || "Failed to create post");
+      setErrors(
+        err.response?.data.errors || [
+          err.response?.data.message || "Failed to create post",
+        ]
+      );
     }
   };
 
   return (
     <div className="post-form">
       <h2>Create Post</h2>
-      {error && <p className="error">{error}</p>}
+      {errors.length > 0 && (
+        <ul className="error-list">
+          {errors.map((error, index) => (
+            <li key={index} className="error">
+              {error}
+            </li>
+          ))}
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
