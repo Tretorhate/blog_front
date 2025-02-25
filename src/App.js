@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import PostForm from "./components/PostForm";
+import PostList from "./components/PostList";
+import Profile from "./components/Profile";
+import { getProfile } from "./api";
+import "./styles.css";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await getProfile();
+        setUser(res.data.data);
+        localStorage.setItem("userId", res.data.data.id); // Ensure ID is stored
+        localStorage.setItem("userRole", res.data.data.role); // Ensure role is stored
+      } catch (err) {
+        console.error("Not logged in", err);
+      }
+    };
+    if (localStorage.getItem("token")) {
+      fetchUser();
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar user={user} setUser={setUser} />
+        <div className="container">
+          <Routes>
+            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/register" element={<Register setUser={setUser} />} />
+            <Route path="/create-post" element={<PostForm />} />
+            <Route path="/" element={<PostList />} />
+            <Route path="/profile" element={<Profile user={user} />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
