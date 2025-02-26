@@ -43,7 +43,7 @@ function Login({ setUser }) {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email address"
           value={formData.email}
           onChange={handleChange}
           required

@@ -49,20 +49,22 @@ function Profile({ user }) {
         <input
           type="text"
           name="username"
+          placeholder="Username"
           value={formData.username}
           onChange={handleChange}
         />
         <input
           type="email"
           name="email"
+          placeholder="Email address"
           value={formData.email}
           onChange={handleChange}
         />
         <textarea
           name="bio"
+          placeholder="Tell us about yourself..."
           value={formData.bio}
           onChange={handleChange}
-          placeholder="Bio"
         />
         <button type="submit">Update Profile</button>
       </form>

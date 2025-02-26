@@ -48,14 +48,14 @@ function PostForm() {
         <input
           type="text"
           name="title"
-          placeholder="Title"
+          placeholder="Post title"
           value={formData.title}
           onChange={handleChange}
           required
         />
         <textarea
           name="content"
-          placeholder="Content"
+          placeholder="Write your post here..."
           value={formData.content}
           onChange={handleChange}
           required
@@ -63,7 +63,7 @@ function PostForm() {
         <input
           type="text"
           name="tags"
-          placeholder="Tags (comma-separated)"
+          placeholder="Tags (e.g., tech, gaming)"
           value={formData.tags}
           onChange={handleChange}
         />

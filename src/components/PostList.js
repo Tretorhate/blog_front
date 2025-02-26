@@ -85,7 +85,7 @@ function PostList({ user }) {
     <div className="post-list">
       <h2>All Posts</h2>
       {error && <p className="error">{error}</p>}
-      {posts.length === 0 && !error && <p>No posts available.</p>}
+      {posts.length === 0 && !error && <p>No posts available yet.</p>}
       {posts.map((post) => (
         <div key={post._id} className="post">
           {editingPostId === post._id ? (
@@ -104,11 +104,13 @@ function PostList({ user }) {
                 name="title"
                 value={editFormData.title}
                 onChange={handleEditChange}
+                placeholder="Post title"
               />
               <textarea
                 name="content"
                 value={editFormData.content}
                 onChange={handleEditChange}
+                placeholder="Post content"
               />
               <input
                 type="text"
@@ -117,8 +119,10 @@ function PostList({ user }) {
                 onChange={handleEditChange}
                 placeholder="Tags (comma-separated)"
               />
-              <button onClick={() => handleEditSubmit(post._id)}>Save</button>
-              <button onClick={() => setEditingPostId(null)}>Cancel</button>
+              <div className="post-actions">
+                <button onClick={() => handleEditSubmit(post._id)}>Save</button>
+                <button onClick={() => setEditingPostId(null)}>Cancel</button>
+              </div>
             </div>
           ) : (
             <>

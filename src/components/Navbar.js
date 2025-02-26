@@ -13,7 +13,7 @@ function Navbar({ user, setUser }) {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        Blog
+        Atlas Blog
       </Link>
       <div className="nav-links">
         {user ? (
