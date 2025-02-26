@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL, // Uses .env value
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 API.interceptors.request.use((config) => {
@@ -21,5 +21,7 @@ export const updatePost = (id, data) => API.put(`/posts/${id}`, data);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 export const getProfile = () => API.get("/users/profile");
 export const updateProfile = (data) => API.put("/users/profile", data);
+export const getAllUsers = () => API.get("/users"); // New
+export const deleteUser = (id) => API.delete(`/users/${id}`); // New
 
 export default API;

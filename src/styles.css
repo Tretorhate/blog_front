@@ -8,8 +8,8 @@
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
-  background-color: #f9fafb; /* Light gray */
-  color: #1f2937; /* Dark gray */
+  background-color: #f9fafb;
+  color: #1f2937;
   line-height: 1.6;
 }
 
@@ -22,32 +22,32 @@ body {
 
 /* Typography */
 h2 {
-  font-size: 1.875rem; /* 30px */
+  font-size: 1.875rem;
   font-weight: 700;
-  color: #111827; /* Nearly black */
+  color: #111827;
   margin-bottom: 1.5rem;
 }
 
 h3 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #374151; /* Darker gray */
+  color: #374151;
 }
 
 /* Buttons (General) */
 button {
-  background-color: #1f2937; /* Dark gray */
+  background-color: #1f2937;
   color: #ffffff;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 0.375rem; /* 6px */
+  border-radius: 0.375rem;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
-  background-color: #374151; /* Lighter gray */
+  background-color: #374151;
   transform: translateY(-1px);
 }
 
@@ -57,7 +57,7 @@ button:active {
 
 /* Navbar */
 .navbar {
-  background-color: #111827; /* Dark navy */
+  background-color: #111827;
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -86,10 +86,9 @@ button:active {
 }
 
 .nav-links a:hover {
-  color: #d1d5db; /* Light gray on hover */
+  color: #d1d5db;
 }
 
-/* Logout Button */
 .nav-links .nav-button {
   background: none;
   color: #ffffff;
@@ -131,7 +130,7 @@ button:active {
   width: 100%;
   padding: 0.75rem;
   margin: 0.5rem 0 1rem;
-  border: 1px solid #d1d5db; /* Light gray border */
+  border: 1px solid #d1d5db;
   border-radius: 0.375rem;
   font-size: 1rem;
   background-color: #f9fafb;
@@ -144,7 +143,7 @@ button:active {
 .profile input:focus,
 .profile textarea:focus {
   outline: none;
-  border-color: #6b7280; /* Medium gray */
+  border-color: #6b7280;
   box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
 }
 
@@ -168,7 +167,7 @@ button:active {
 }
 
 .post-list .post p {
-  color: #4b5563; /* Medium gray */
+  color: #4b5563;
   margin: 0.5rem 0;
 }
 
@@ -199,11 +198,11 @@ button:active {
 
 /* Edit Form */
 .edit-form {
-  background-color: #ffffff; /* Match other forms */
-  padding: 2rem; /* Consistent padding */
-  border-radius: 0.5rem; /* 8px */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Match shadow */
-  margin: 1rem 0; /* Spacing within post-detail */
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 1rem 0;
 }
 
 .edit-form input,
@@ -241,12 +240,45 @@ button:active {
 }
 
 .post-actions button {
-  background-color: #6b7280; /* Gray */
+  background-color: #6b7280;
   padding: 0.5rem 1rem;
 }
 
 .post-actions button:hover {
   background-color: #4b5563;
+}
+
+/* User List */
+.user-list {
+  margin-top: 2rem;
+}
+
+.user-item {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.user-item p {
+  color: #4b5563;
+  margin: 0.5rem 0;
+}
+
+.user-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.user-actions button {
+  background-color: #dc2626;
+  padding: 0.5rem 1rem;
+}
+
+.user-actions button:hover {
+  background-color: #b91c1c;
 }
 
 /* Error and Success Messages */
@@ -257,12 +289,12 @@ button:active {
 }
 
 .error-list .error {
-  color: #dc2626; /* Red */
-  font-size: 0.875rem; /* 14px */
+  color: #dc2626;
+  font-size: 0.875rem;
 }
 
 .success {
-  color: #16a34a; /* Green */
+  color: #16a34a;
   font-size: 0.875rem;
   margin: 1rem 0;
 }
@@ -292,7 +324,8 @@ button:active {
     padding: 1.5rem;
     margin: 1rem;
   }
-  .post-list .post {
+  .post-list .post,
+  .user-item {
     padding: 1rem;
   }
 }

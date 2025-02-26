@@ -10,7 +10,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
-import PostDetail from "./components/PostDetail"; // New import
+import PostDetail from "./components/PostDetail";
+import UserList from "./components/UserList"; // New import
 import Profile from "./components/Profile";
 import { getProfile } from "./api";
 import "./styles.css";
@@ -53,11 +54,12 @@ function App() {
             <Route path="/create-post" element={<PostForm />} />
             <Route path="/" element={<PostList user={user} />} />
             <Route path="/profile" element={<Profile user={user} />} />
+            <Route path="/posts/:id" element={<PostDetail user={user} />} />
             <Route
-              path="/posts/:id"
-              element={<PostDetail user={user} />}
+              path="/admin/users"
+              element={<UserList user={user} />}
             />{" "}
-            {/* Pass user */}
+            {/* New route */}
           </Routes>
         </div>
       </div>

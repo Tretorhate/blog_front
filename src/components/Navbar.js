@@ -21,7 +21,10 @@ function Navbar({ user, setUser }) {
             <Link to="/create-post">Create Post</Link>
             <Link to="/profile">Profile</Link>
             {user.role === "admin" && (
-              <Link to="/register">Register New User</Link>
+              <>
+                <Link to="/register">Register New User</Link>
+                <Link to="/admin/users">Manage Users</Link>
+              </>
             )}
             <button className="nav-button" onClick={handleLogout}>
               Logout
