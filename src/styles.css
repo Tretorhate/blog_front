@@ -1,43 +1,126 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset and Base Styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif; /* Updated from Arial */
+  background-color: #f9fafb; /* Light gray */
+  color: #1f2937; /* Dark gray */
+  line-height: 1.6;
+}
+
+/* Container */
 .container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 20px;
+  max-width: 960px; /* Slightly wider than 800px */
+  margin: 0 auto; /* Centered */
+  padding: 1.5rem; /* Consistent padding */
 }
 
+/* Typography */
+h2 {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  color: #111827; /* Nearly black */
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  color: #374151; /* Darker gray */
+}
+
+/* Buttons (General) */
+button {
+  background-color: #1f2937; /* Dark gray */
+  color: #ffffff;
+  padding: 0.75rem 1.5rem; /* Updated from 10px 20px */
+  border: none;
+  border-radius: 0.375rem; /* 6px */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #374151; /* Lighter gray, updated from #555 */
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Navbar */
 .navbar {
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: #111827; /* Dark navy, updated from #333 */
+  padding: 1rem 1.5rem; /* Updated from 10px 20px */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
 .navbar .logo {
-  color: white;
+  color: #ffffff; /* Updated from white */
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.5rem; /* Updated from 1.5em */
+  font-weight: 700; /* Bold logo */
 }
 
-.nav-links a,
-.nav-links button {
-  color: white;
+.nav-links {
+  display: flex;
+  gap: 1.5rem; /* Updated from margin-left: 15px */
+  align-items: center; /* Align items vertically */
+}
+
+.nav-links a {
+  color: #ffffff;
   text-decoration: none;
-  margin-left: 15px;
-  background: none;
-  border: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #d1d5db; /* Light gray on hover */
+}
+
+/* Logout Button */
+.nav-links .nav-button {
+  background: none; /* No background, blends with navbar */
+  color: #ffffff;
+  padding: 0.5rem 1rem; /* Smaller than general button */
+  border: 1px solid #ffffff; /* Subtle border */
+  border-radius: 0.375rem; /* 6px */
+  font-weight: 500;
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
 
+.nav-links .nav-button:hover {
+  color: #d1d5db;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.nav-links .nav-button:active {
+  transform: translateY(0);
+}
+
+/* Forms (auth-form, post-form, profile) */
 .auth-form,
 .post-form,
 .profile {
-  margin: 20px 0;
+  background-color: #ffffff;
+  padding: 2rem; /* Updated from margin-based spacing */
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
+  max-width: 480px;
+  margin: 2rem auto; /* Centered with more margin */
 }
 
 .auth-form input,
@@ -45,75 +128,139 @@ body {
 .post-form textarea,
 .profile input,
 .profile textarea {
-  display: block;
   width: 100%;
-  margin: 10px 0;
-  padding: 8px;
+  padding: 0.75rem; /* Updated from 8px */
+  margin: 0.5rem 0 1rem; /* Updated spacing */
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 0.375rem; /* 6px */
+  font-size: 1rem;
+  background-color: #f9fafb; /* Light background */
+  transition: border-color 0.2s ease;
 }
 
-button {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+.auth-form input:focus,
+.post-form input:focus,
+.post-form textarea:focus,
+.profile input:focus,
+.profile textarea:focus {
+  outline: none;
+  border-color: #6b7280; /* Medium gray */
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2); /* Focus ring */
 }
 
-button:hover {
-  background-color: #555;
+.post-form textarea,
+.profile textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
-.error {
-  color: red;
-}
-
-.success {
-  color: green;
+/* Post List */
+.post-list {
+  margin-top: 2rem; /* Added spacing */
 }
 
 .post-list .post {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px 0;
+  background-color: #ffffff;
+  padding: 1.5rem; /* Updated from 15px */
+  border-radius: 0.5rem; /* 8px, updated from 1px border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Replaced border with shadow */
+  margin-bottom: 1.5rem; /* Updated from 10px */
+}
+
+.post-list .post p {
+  color: #4b5563; /* Medium gray */
+  margin: 0.5rem 0;
 }
 
 .post-actions {
-  margin-top: 10px;
+  margin-top: 1rem; /* Updated from 10px */
+  display: flex;
+  gap: 1rem; /* Replaced margin-right with gap */
 }
 
 .post-actions button {
-  margin-right: 10px;
-  background-color: #007bff;
+  background-color: #6b7280; /* Gray, updated from #007bff */
+  padding: 0.5rem 1rem; /* Smaller than general button */
 }
 
 .post-actions button:hover {
-  background-color: #0056b3;
+  background-color: #4b5563; /* Updated from #0056b3 */
 }
 
+/* Edit Form */
 .edit-form {
-  margin-top: 10px;
+  margin-top: 1rem; /* Updated from 10px */
 }
 
 .edit-form input,
 .edit-form textarea {
   width: 100%;
-  margin: 10px 0;
-  padding: 8px;
+  padding: 0.75rem; /* Updated from 8px */
+  margin: 0.5rem 0 1rem; /* Updated spacing */
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: #f9fafb;
+  transition: border-color 0.2s ease;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
+}
+
+.edit-form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .edit-form button {
-  margin-right: 10px;
+  margin-right: 1rem; /* Updated from 10px */
 }
 
+/* Error and Success Messages */
 .error-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 1rem 0; /* Updated from 10px */
 }
 
 .error-list .error {
-  color: red;
-  font-size: 0.9em;
+  color: #dc2626; /* Red, updated from red */
+  font-size: 0.875rem; /* 14px, updated from 0.9em */
 }
 
-/* Existing styles remain unchanged */
+.success {
+  color: #16a34a; /* Green, updated from green */
+  font-size: 0.875rem;
+  margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+  .auth-form,
+  .post-form,
+  .profile {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .post-list .post {
+    padding: 1rem;
+  }
+}

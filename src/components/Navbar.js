@@ -20,7 +20,12 @@ function Navbar({ user, setUser }) {
           <>
             <Link to="/create-post">Create Post</Link>
             <Link to="/profile">Profile</Link>
-            <button onClick={handleLogout}>Logout</button>
+            {user.role === "admin" && (
+              <Link to="/register">Register New User</Link>
+            )}
+            <button className="nav-button" onClick={handleLogout}>
+              Logout
+            </button>
           </>
         ) : (
           <>
