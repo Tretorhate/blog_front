@@ -7,7 +7,7 @@
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif; /* Updated from Arial */
+    sans-serif;
   background-color: #f9fafb; /* Light gray */
   color: #1f2937; /* Dark gray */
   line-height: 1.6;
@@ -15,9 +15,9 @@ body {
 
 /* Container */
 .container {
-  max-width: 960px; /* Slightly wider than 800px */
-  margin: 0 auto; /* Centered */
-  padding: 1.5rem; /* Consistent padding */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
 
 /* Typography */
@@ -38,7 +38,7 @@ h3 {
 button {
   background-color: #1f2937; /* Dark gray */
   color: #ffffff;
-  padding: 0.75rem 1.5rem; /* Updated from 10px 20px */
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.375rem; /* 6px */
   font-weight: 500;
@@ -47,7 +47,7 @@ button {
 }
 
 button:hover {
-  background-color: #374151; /* Lighter gray, updated from #555 */
+  background-color: #374151; /* Lighter gray */
   transform: translateY(-1px);
 }
 
@@ -57,25 +57,25 @@ button:active {
 
 /* Navbar */
 .navbar {
-  background-color: #111827; /* Dark navy, updated from #333 */
-  padding: 1rem 1.5rem; /* Updated from 10px 20px */
+  background-color: #111827; /* Dark navy */
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .logo {
-  color: #ffffff; /* Updated from white */
+  color: #ffffff;
   text-decoration: none;
-  font-size: 1.5rem; /* Updated from 1.5em */
-  font-weight: 700; /* Bold logo */
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem; /* Updated from margin-left: 15px */
-  align-items: center; /* Align items vertically */
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -91,11 +91,11 @@ button:active {
 
 /* Logout Button */
 .nav-links .nav-button {
-  background: none; /* No background, blends with navbar */
+  background: none;
   color: #ffffff;
-  padding: 0.5rem 1rem; /* Smaller than general button */
-  border: 1px solid #ffffff; /* Subtle border */
-  border-radius: 0.375rem; /* 6px */
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 0.375rem;
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
@@ -116,11 +116,11 @@ button:active {
 .post-form,
 .profile {
   background-color: #ffffff;
-  padding: 2rem; /* Updated from margin-based spacing */
-  border-radius: 0.5rem; /* 8px */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   max-width: 480px;
-  margin: 2rem auto; /* Centered with more margin */
+  margin: 2rem auto;
 }
 
 .auth-form input,
@@ -129,12 +129,12 @@ button:active {
 .profile input,
 .profile textarea {
   width: 100%;
-  padding: 0.75rem; /* Updated from 8px */
-  margin: 0.5rem 0 1rem; /* Updated spacing */
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem;
   border: 1px solid #d1d5db; /* Light gray border */
-  border-radius: 0.375rem; /* 6px */
+  border-radius: 0.375rem;
   font-size: 1rem;
-  background-color: #f9fafb; /* Light background */
+  background-color: #f9fafb;
   transition: border-color 0.2s ease;
 }
 
@@ -145,7 +145,7 @@ button:active {
 .profile textarea:focus {
   outline: none;
   border-color: #6b7280; /* Medium gray */
-  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2); /* Focus ring */
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
 }
 
 .post-form textarea,
@@ -156,15 +156,15 @@ button:active {
 
 /* Post List */
 .post-list {
-  margin-top: 2rem; /* Added spacing */
+  margin-top: 2rem;
 }
 
 .post-list .post {
   background-color: #ffffff;
-  padding: 1.5rem; /* Updated from 15px */
-  border-radius: 0.5rem; /* 8px, updated from 1px border */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Replaced border with shadow */
-  margin-bottom: 1.5rem; /* Updated from 10px */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
 }
 
 .post-list .post p {
@@ -172,31 +172,45 @@ button:active {
   margin: 0.5rem 0;
 }
 
-.post-actions {
-  margin-top: 1rem; /* Updated from 10px */
-  display: flex;
-  gap: 1rem; /* Replaced margin-right with gap */
+.post-list .post h3 a.post-title {
+  color: #111827;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.post-actions button {
-  background-color: #6b7280; /* Gray, updated from #007bff */
-  padding: 0.5rem 1rem; /* Smaller than general button */
+.post-list .post h3 a.post-title:hover {
+  color: #6b7280;
 }
 
-.post-actions button:hover {
-  background-color: #4b5563; /* Updated from #0056b3 */
+/* Post Detail */
+.post-detail {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.post-detail p {
+  color: #4b5563;
+  margin: 1rem 0;
 }
 
 /* Edit Form */
 .edit-form {
-  margin-top: 1rem; /* Updated from 10px */
+  background-color: #ffffff; /* Match other forms */
+  padding: 2rem; /* Consistent padding */
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Match shadow */
+  margin: 1rem 0; /* Spacing within post-detail */
 }
 
 .edit-form input,
 .edit-form textarea {
   width: 100%;
-  padding: 0.75rem; /* Updated from 8px */
-  margin: 0.5rem 0 1rem; /* Updated spacing */
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem;
   border: 1px solid #d1d5db;
   border-radius: 0.375rem;
   background-color: #f9fafb;
@@ -216,23 +230,39 @@ button:active {
 }
 
 .edit-form button {
-  margin-right: 1rem; /* Updated from 10px */
+  margin-right: 1rem;
+}
+
+/* Post Actions */
+.post-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.post-actions button {
+  background-color: #6b7280; /* Gray */
+  padding: 0.5rem 1rem;
+}
+
+.post-actions button:hover {
+  background-color: #4b5563;
 }
 
 /* Error and Success Messages */
 .error-list {
   list-style: none;
   padding: 0;
-  margin: 1rem 0; /* Updated from 10px */
+  margin: 1rem 0;
 }
 
 .error-list .error {
-  color: #dc2626; /* Red, updated from red */
-  font-size: 0.875rem; /* 14px, updated from 0.9em */
+  color: #dc2626; /* Red */
+  font-size: 0.875rem; /* 14px */
 }
 
 .success {
-  color: #16a34a; /* Green, updated from green */
+  color: #16a34a; /* Green */
   font-size: 0.875rem;
   margin: 1rem 0;
 }
@@ -256,7 +286,9 @@ button:active {
   }
   .auth-form,
   .post-form,
-  .profile {
+  .profile,
+  .post-detail,
+  .edit-form {
     padding: 1.5rem;
     margin: 1rem;
   }

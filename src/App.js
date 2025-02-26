@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
+import PostDetail from "./components/PostDetail"; // New import
 import Profile from "./components/Profile";
 import { getProfile } from "./api";
 import "./styles.css";
@@ -31,10 +32,9 @@ function App() {
     }
   }, []);
 
-  // Protected Register component to redirect logged-in users
   const ProtectedRegister = ({ user }) => {
-    if (user && user.role !== "admin") {
-      return <Navigate to="/" replace />; // Redirect logged-in users to homepage
+    if (user) {
+      return <Navigate to="/" replace />;
     }
     return <Register setUser={setUser} />;
   };
@@ -53,6 +53,11 @@ function App() {
             <Route path="/create-post" element={<PostForm />} />
             <Route path="/" element={<PostList user={user} />} />
             <Route path="/profile" element={<Profile user={user} />} />
+            <Route
+              path="/posts/:id"
+              element={<PostDetail user={user} />}
+            />{" "}
+            {/* Pass user */}
           </Routes>
         </div>
       </div>
