@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -26,6 +31,14 @@ function App() {
     }
   }, []);
 
+  // Protected Register component to redirect logged-in users
+  const ProtectedRegister = ({ user }) => {
+    if (user && user.role !== "admin") {
+      return <Navigate to="/" replace />; // Redirect logged-in users to homepage
+    }
+    return <Register setUser={setUser} />;
+  };
+
   return (
     <Router>
       <div className="App">
@@ -33,10 +46,12 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/login" element={<Login setUser={setUser} />} />
-            <Route path="/register" element={<Register setUser={setUser} />} />
+            <Route
+              path="/register"
+              element={<ProtectedRegister user={user} />}
+            />
             <Route path="/create-post" element={<PostForm />} />
-            <Route path="/" element={<PostList user={user} />} />{" "}
-            {/* Pass user */}
+            <Route path="/" element={<PostList user={user} />} />
             <Route path="/profile" element={<Profile user={user} />} />
           </Routes>
         </div>
